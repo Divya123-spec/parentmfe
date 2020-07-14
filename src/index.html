@@ -7,7 +7,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
+<body id="page-top">
   <app-root></app-root>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zone.js/0.9.1/zone.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/custom-elements-es5-adapter.js"></script>
+<script src="https://unpkg.com/@vaadin/router/dist/vaadin-router.umd.min.js"></script>
+<script>
+  var Router = Vaadin.Router;
+</script>
+<script type="module">
+  //import('/aboutmenu/app-three.js');
+  //import('/headermenu/headerbar.js');
+//   import {Router} from 'https://unpkg.com/@vaadin/router/dist/vaadin-router.min.js';
+
+      const outlet = document.getElementById('contentArea');
+      alert(outlet);
+      //outlet.innerHTML = ""
+      const router = new Router(outlet);
+      router.setRoutes([
+        {
+    path: '/dashboard',
+    component: 'mf-dashboard',
+    action: async () => {
+        await import('../dashboardApp/elements/dashboardApp-elements-es2015.js');
+    }
+} ,
+{
+    path: '/',
+    component: 'mf-dashboard',
+    action: async () => {
+        await import('../dashboardApp/elements/dashboardApp-elements-es2015.js');
+    }
+}    ]);
+</script>
+
+
 </html>
